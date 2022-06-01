@@ -1,0 +1,43 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=2:schaswell
+#PBS -l feature=rhel7
+#PBS -l walltime=18:00:00
+#PBS -l pmem=9gb
+#PBS -j oe
+#PBS -A open
+
+#make sure junk does not get written to my home folder
+cd $PBS_O_WORKDIR
+
+echo "Job Info..."
+echo "Job ID:        $PBS_JOBID"
+echo "Tasks:         $PBS_TASKNUM"
+echo "Num Nodes:     $PBS_NUM_NODES"
+echo "Proc Per Node: $PBS_NUM_PPN"
+# get number of cpus
+NP=$(wc -l $PBS_NODEFILE | awk '{print $1}')
+echo "Total Procs:   $NP"
+echo " "
+
+echo "Loading Modules..."
+module purge
+module load intel/19.1.2
+module load impi/2019.8
+module load mkl/2020.3
+module list
+echo " "
+
+echo "Starting job on `hostname` at `date`"
+echo " "
+echo "======================================================================================================"
+echo "===== BEGIN RUN ======================================================================================"
+echo "======================================================================================================"
+
+mpiexec -n "$NP" $HOME/programs/vasp/parstd >outfile
+
+echo "======================================================================================================"
+echo "===== END RUN ========================================================================================"
+echo "======================================================================================================"
+echo " "
+echo "Completing job on `hostname` at `date`"
+echo " "

@@ -1,0 +1,35 @@
+#For AgBiI4 Fin SCF
+
+#Start Params
+ ISTART = 0
+ ICHARG = 2
+
+#Keep Constant
+ EDIFFG = -0.01
+ ENCUT = 250
+  
+#Optimizations
+ NCORE = 1
+ KPAR = 9
+# ISYM = -1
+
+#Occupancies
+ ISMEAR = -5
+# SIGMA = 0.04
+
+#Magnet and SOC
+# LSORBIT = .TRUE.
+# ISPIN = 1
+
+#Relaxation
+ IBRION = -1
+ ISIF = -1
+ NSW = 0
+ EDIFF = 1e-6
+
+ NEDOS = 3000
+
+#Output
+ LMAXMIX = 4
+ LWAVE = .TRUE.
+ LCHARG = .TRUE.

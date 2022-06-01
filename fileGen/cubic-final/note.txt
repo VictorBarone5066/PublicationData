@@ -1,0 +1,8 @@
+Generating this consists of four steps:
+(1) Interpolate the minimum energy lattice constant from E vs V data
+    Run a 1x1x1 shifted point ion relaxation at this lat const (eTol = 0.05 ev/A)
+(2) Run a 2x2x2 shifted point ion relaxation from previous CONTCAR (eTol = 0.02 eV/A)
+(3) Run a 3x3x3 shifted point ion relaxation from previous CONTCAR (eTol = 0.01 eV/A)
+(4) Run a 4x4x4 gamma-centered scf from previous CONTCAR (now, w/ tetra. smearing method)
+
+Shifts are by 1/4, 1/4, 1/4.  
